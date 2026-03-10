@@ -13,11 +13,12 @@
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <!-- Left: Bio -->
         <div class="space-y-6 text-slate-400 text-sm font-medium leading-relaxed">
-          <p>
-            Hey, I'm <span class="text-white font-bold">Weaxle78</span> — a casual streamer and gamer from
+          <p class="flex items-start gap-4">
+            <img src="/profile.png" alt="Weaxle78" class="w-16 h-16 rounded-full object-cover border-2 border-gaming-primary shrink-0 mt-1" />
+            <span>Hey, I'm <span class="text-white font-bold">Weaxle78</span> — a casual streamer and gamer from
             <span class="text-white font-bold">the Netherlands</span>. I game purely for the fun of it: sailing around in
             <span class="text-gaming-primary font-bold">Sea of Thieves</span>, turning laps in
-            <span class="text-gaming-primary font-bold">iRacing</span>, and just enjoying whatever the session brings.
+            <span class="text-gaming-primary font-bold">iRacing</span>, and just enjoying whatever the session brings.</span>
           </p>
           <p>
             You'll also find me messing around in

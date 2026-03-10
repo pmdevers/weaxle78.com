@@ -36,6 +36,14 @@
   .nav-link:hover::after {
     @apply w-full;
   }
+
+  .nav-link-active {
+    @apply text-white opacity-100;
+  }
+
+  .nav-link-active::after {
+    @apply w-full;
+  }
 }
 
 /* Custom scrollbar */

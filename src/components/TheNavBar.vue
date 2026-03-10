@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
+const router = useRouter()
+const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const activeSection = ref('home')
@@ -37,42 +40,54 @@ const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
 
 const sections = ['home', 'specs', 'games', 'media']
 
-let observer: IntersectionObserver
+function updateActiveSection() {
+  const threshold = window.scrollY + window.innerHeight * 0.25
+  let current = 'home'
+  for (const id of sections) {
+    const el = document.getElementById(id)
+    if (el && el.offsetTop <= threshold) {
+      current = id
+    }
+  }
+  activeSection.value = current
+}
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
     isScrolled.value = window.scrollY > 20
-  })
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          activeSection.value = entry.target.id
-        }
-      }
-    },
-    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-  )
-
-  sections.forEach((id) => {
-    const el = document.getElementById(id)
-    if (el) observer.observe(el)
-  })
+    if (route.path === '/') updateActiveSection()
+  }, { passive: true })
+  updateActiveSection()
 })
 
-onUnmounted(() => {
-  observer?.disconnect()
-})
+watch(
+  () => route.path,
+  (path) => {
+    if (path === '/') setTimeout(updateActiveSection, 100)
+  }
+)
+
+onUnmounted(() => {})
 
 const scrollTo = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   isMobileMenuOpen.value = false
+  if (route.path !== '/') {
+    router.push('/').then(() => {
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100)
+    })
+  } else {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 
 const navClass = (id: string) =>
-  id === activeSection.value
-    ? 'nav-link !text-white border-b-2 border-gaming-primary !opacity-100'
+  route.path === '/' && id === activeSection.value
+    ? 'nav-link nav-link-active'
+    : 'nav-link'
+
+const routeClass = (path: string) =>
+  route.path === path
+    ? 'nav-link nav-link-active'
     : 'nav-link'
 </script>
 
@@ -105,6 +120,7 @@ const navClass = (id: string) =>
             <button @click="scrollTo('home')" :class="navClass('home')">Home</button>
             <button @click="scrollTo('specs')" :class="navClass('specs')">Specs</button>
             <button @click="scrollTo('games')" :class="navClass('games')">Games</button>
+            <button @click="scrollTo('media')" :class="navClass('media')">Media</button>
         </div>
       </div>
 
@@ -118,7 +134,8 @@ const navClass = (id: string) =>
 
       <!-- Right Side Nav -->
       <div class="hidden lg:flex items-center justify-end gap-8">
-        <button @click="scrollTo('media')" :class="navClass('media')">Media</button>
+        <RouterLink to="/blog" :class="routeClass('/blog')">Blog</RouterLink>
+        <RouterLink to="/merch" :class="routeClass('/merch')">Merch</RouterLink>
         <a href="https://twitch.tv/weaxle78" target="_blank" class="nav-link">Live</a>
       </div>
 
@@ -150,6 +167,8 @@ const navClass = (id: string) =>
         <button @click="scrollTo('specs')" :class="navClass('specs')">Specs</button>
         <button @click="scrollTo('games')" :class="navClass('games')">Games</button>
         <button @click="scrollTo('media')" :class="navClass('media')">Media</button>
+        <RouterLink to="/blog" :class="routeClass('/blog')">Blog</RouterLink>
+        <RouterLink to="/merch" :class="routeClass('/merch')">Merch</RouterLink>
         <a href="https://twitch.tv/weaxle78" target="_blank" class="btn-gaming">Live Now</a>
       </div>
     </transition>
