@@ -30,7 +30,30 @@ const renderedContent = computed(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gaming-dark py-32 px-6">
+
+  <div class="min-h-screen bg-gaming-dark">
+
+    <!-- Hero header -->
+    <div
+      class="relative flex items-end h-64 md:h-96 bg-cover bg-center"
+      :style="{ backgroundImage: `url('${blog.currentPost?.image || '/slider/blog-header.png'}')` }"
+    >
+      <div class="absolute inset-0 bg-gradient-to-t from-gaming-dark via-gaming-dark/60 to-black/40"></div>
+      <div class="relative w-full max-w-2xl mx-auto px-6 pb-10">
+        <template v-if="blog.currentPost">
+          <div class="flex items-center gap-4 mb-3">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-gaming-primary">{{ blog.currentPost.category }}</span>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest">{{ blog.currentPost.readTime }}</span>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest">{{ formatDate(blog.currentPost.date) }}</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-white uppercase italic tracking-tighter leading-tight drop-shadow-lg">
+            {{ blog.currentPost.title }}
+          </h1>
+        </template>
+      </div>
+    </div>
+
+    <div class="px-6 py-12">
     <div class="max-w-2xl mx-auto">
 
       <!-- Back -->
@@ -53,29 +76,8 @@ const renderedContent = computed(() => {
 
       <!-- Post -->
       <article v-else-if="blog.currentPost">
-        <!-- Meta -->
-        <div class="flex items-center gap-4 mb-6">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-gaming-primary">{{ blog.currentPost.category }}</span>
-          <span class="text-[10px] text-slate-600 uppercase tracking-widest">{{ blog.currentPost.readTime }}</span>
-          <span class="text-[10px] text-slate-600 uppercase tracking-widest">{{ formatDate(blog.currentPost.date) }}</span>
-        </div>
-
-        <!-- Title -->
-        <h1 class="text-3xl md:text-4xl font-extrabold text-white uppercase italic tracking-tighter leading-tight mb-4">
-          {{ blog.currentPost.title }}
-        </h1>
-
         <!-- Divider -->
         <div class="w-16 h-1 bg-gaming-primary mb-10"></div>
-
-        <!-- Hero Image -->
-        <div v-if="blog.currentPost.image" class="mb-10 rounded-lg overflow-hidden">
-          <img
-            :src="blog.currentPost.image"
-            :alt="blog.currentPost.title"
-            class="w-full h-64 md:h-80 object-cover"
-          />
-        </div>
 
         <!-- Summary -->
         <p class="text-slate-300 text-base font-medium leading-relaxed mb-8 border-l-4 border-gaming-primary/50 pl-4">
@@ -86,6 +88,7 @@ const renderedContent = computed(() => {
         <div class="space-y-4" v-html="renderedContent"></div>
       </article>
 
+    </div>
     </div>
   </div>
 </template>

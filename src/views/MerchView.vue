@@ -4,7 +4,7 @@
     <!-- Hero heading -->
     <div
       class="relative flex items-center justify-center h-64 md:h-80 bg-cover bg-center"
-      style="background-image: url('/slider/blog-header.png')"
+      style="background-image: url('/banners/merch-header.png')"
     >
       <!-- Overlay -->
       <div class="absolute inset-0 bg-gaming-dark/70"></div>
