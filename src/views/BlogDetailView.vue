@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import { useBlogStore } from '@/stores/blog'
 
 const route = useRoute()
@@ -11,6 +12,27 @@ watch(
   (slug) => { if (slug) blog.fetchPost(slug as string) },
   { immediate: true },
 )
+
+useHead(computed(() => {
+  const post = blog.currentPost
+  if (!post) return { title: 'Blog | WEAXLE78' }
+  const url = `https://weaxle78.com/blog/${post.slug}`
+  const image = post.image?.startsWith('/') ? `https://weaxle78.com${post.image}` : post.image
+  return {
+    title: `${post.title} | WEAXLE78`,
+    meta: [
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: url },
+      { property: 'og:title', content: post.title },
+      { property: 'og:description', content: post.summary },
+      { property: 'og:image', content: image },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: post.title },
+      { name: 'twitter:description', content: post.summary },
+      { name: 'twitter:image', content: image },
+    ],
+  }
+}))
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })

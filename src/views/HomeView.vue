@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
 import { useContentStore } from '@/stores/content'
+
+useHead({
+  title: 'WEAXLE78 | ONWARDS TO GLORY!',
+  meta: [
+    { property: 'og:title', content: 'WEAXLE78 | ONWARDS TO GLORY!' },
+    { property: 'og:description', content: 'Gaming content, streams, setups and more. Sea of Thieves, iRacing, Battlefield and beyond.' },
+    { property: 'og:url', content: 'https://weaxle78.com/' },
+    { property: 'og:type', content: 'website' },
+  ],
+})
 import { useYouTubeStore } from '@/stores/youtube'
 import { useTwitchStore } from '@/stores/twitch'
 import HeroSlider from '@/components/HeroSlider.vue'

@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import { useBlogStore } from '@/stores/blog'
+
+useHead({
+  title: 'Blog | WEAXLE78',
+  meta: [
+    { property: 'og:title', content: 'Blog | WEAXLE78' },
+    { property: 'og:description', content: 'Gaming stories, setup updates and random thoughts from Weaxle78.' },
+    { property: 'og:url', content: 'https://weaxle78.com/blog' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: 'https://weaxle78.com/banners/blog-header.png' },
+  ],
+})
 
 const blog = useBlogStore()
 const route = useRoute()

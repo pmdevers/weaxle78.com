@@ -17,6 +17,7 @@
     "db:setup": "bun --env-file=server/.env run db/seed.ts"
   },
   "dependencies": {
+    "@unhead/vue": "^2.1.12",
     "baseline-browser-mapping": "^2.10.0",
     "caniuse-lite": "^1.0.30001777",
     "pinia": "^3.0.4",

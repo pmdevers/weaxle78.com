@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Merch Store | WEAXLE78',
+  meta: [
+    { property: 'og:title', content: 'Merch Store | WEAXLE78' },
+    { property: 'og:description', content: 'Rep the brand. Gear up. Official Weaxle78 merchandise store.' },
+    { property: 'og:url', content: 'https://weaxle78.com/merch' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: 'https://weaxle78.com/banners/merch-header.png' },
+  ],
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-gaming-dark">
 
