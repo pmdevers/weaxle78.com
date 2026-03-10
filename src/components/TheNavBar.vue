@@ -113,7 +113,7 @@ const routeClass = (path: string) =>
     class="sticky top-0 w-full z-50 transition-all duration-300 px-6 py-4 lg:py-0 lg:px-12 backdrop-blur-xl border-b border-white/5 bg-black/80"
     :class="isScrolled ? 'bg-black/95' : 'lg:bg-black/40'"
   >
-    <div class="max-w-7xl mx-auto flex items-center justify-between lg:grid lg:grid-cols-[1fr_240px_1fr]">
+    <div class="relative max-w-7xl mx-auto flex items-center justify-between lg:grid lg:grid-cols-[1fr_240px_1fr]">
       <!-- Left nav links -->
       <div class="hidden lg:flex items-center gap-8">
         <div class="flex items-center gap-8">
@@ -140,13 +140,12 @@ const routeClass = (path: string) =>
       </div>
 
       <!-- Mobile Brand -->
-      <div class="lg:hidden flex items-center gap-3">
-        <img src="/android-chrome-192x192.png" alt="Weaxle78" class="w-10 h-10 object-contain" />
-        <span class="text-lg font-bold tracking-tighter text-white">WEAXLE78</span>
+      <div class="lg:hidden absolute left-1/2 -translate-x-1/2">
+        <span class="text-lg font-bold tracking-tighter text-white uppercase italic">WEAXLE78</span>
       </div>
 
       <!-- Mobile Trigger -->
-      <button class="lg:hidden text-white" @click="isMobileMenuOpen = !isMobileMenuOpen">
+      <button class="lg:hidden text-white ml-auto" @click="isMobileMenuOpen = !isMobileMenuOpen">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path v-if="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
           <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
