@@ -20,10 +20,10 @@ const content = {
     { label: 'Audio Interface', value: 'MOTU M2', icon: 'M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3' },
   ],
   games: [
-    { name: 'Sea of Thieves', rank: 'Pirate Legend', image: '/games/Sea of Thieves.webp' },
-    { name: 'iRacing', rank: 'Competitive', image: '/games/IRacing.webp' },
-    { name: 'Call of Duty', rank: 'Multiplayer', image: '/games/Call of Duty.webp' },
-    { name: 'Battlefield', rank: 'Casual / Stream', image: '/games/Battlefield 6.webp' },
+    { name: 'Sea of Thieves', rank: 'Pirate Legend', image: '/games/sea-of-thieves.webp' },
+    { name: 'iRacing', rank: 'Competitive', image: '/games/iracing.webp' },
+    { name: 'Call of Duty', rank: 'Multiplayer', image: '/games/call-of-duty.webp' },
+    { name: 'Battlefield', rank: 'Casual / Stream', image: '/games/battlefield-6.webp' },
   ],
   partners: [
     { name: 'SteelSeries' },
