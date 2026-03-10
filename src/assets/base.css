@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gaming-dark text-slate-300 font-gaming antialiased selection:bg-gaming-primary selection:text-white;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-gaming-card border border-white/5 rounded-none;
+  }
+
+  .neon-border {
+    @apply relative overflow-hidden;
+  }
+
+  .neon-border::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-[1px] bg-gaming-primary opacity-50;
+  }
+
+  .btn-gaming {
+    @apply px-8 py-3 bg-gaming-primary text-white font-bold uppercase tracking-widest transition-all duration-200 hover:brightness-110 active:scale-95 text-sm;
+  }
+
+  .nav-link {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white transition-colors relative py-2;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-gaming-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#080808];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gaming-primary/50 hover:bg-gaming-primary transition-colors;
+}
