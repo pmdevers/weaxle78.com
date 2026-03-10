@@ -16,6 +16,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "baseline-browser-mapping": "^2.10.0",
+    "caniuse-lite": "^1.0.30001777",
     "pinia": "^3.0.4",
     "vue": "^3.5.17"
   },
