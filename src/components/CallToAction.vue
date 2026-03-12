@@ -5,7 +5,7 @@
       <h2 class="text-6xl md:text-8xl font-extrabold text-white tracking-tighter uppercase italic leading-none drop-shadow-2xl">
         JOIN THE <br/> <span class="text-gaming-primary">WEAXLE</span> SQUAD
       </h2>
-      <button class="btn-gaming !px-16 !py-5 !text-lg">Follow Now</button>
+      <a href="https://twitch.tv/weaxle78" target="_blank" rel="noopener noreferrer" class="btn-gaming !px-16 !py-5 !text-lg">Follow Now</a>
     </div>
   </section>
 </template>
